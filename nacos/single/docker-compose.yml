@@ -1,0 +1,36 @@
+version: "3"
+services:
+  nacos-mysql:
+    container_name: nacos-mysql
+    image: nacos/nacos-mysql:8.0.16
+    networks:
+      - nacos_net
+    env_file:
+      - ./mysql.env
+    volumes:
+      - /etc/localtime:/etc/localtime:rw
+      - ./data:/var/lib/mysql
+    ports:
+      - 3306:3306
+
+  nacos-app:
+    image: nacos/nacos-server:v2.0.4
+    container_name: nacos-app
+    env_file:
+      - nacos.env
+    volumes:
+      - /etc/localtime:/etc/localtime:rw
+      - ./logs/:/home/nacos/logs
+    ports:
+      - 8848:8848
+      - 9848:9848
+      - 9849:9849
+    restart: always
+    environment:
+      TZ: Asia/Shanghai
+    networks:
+      - nacos_net
+
+networks:
+  nacos_net:
+    driver: bridge

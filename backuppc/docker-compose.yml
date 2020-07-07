@@ -1,0 +1,20 @@
+version: '3'
+services:
+  backuppc:
+    image: adferrand/backuppc:latest
+    container_name: backuppc
+    hostname: backuppc
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime:rw
+      - /home/backuppc:/home/backuppc:rw
+      - /data/backuppc:/data/backuppc:rw
+      - /etc/backuppc:/etc/backuppc:rw
+    environment:
+      - BACKUPPC_UUID=1000
+      - BACKUPPC_GUID=1000
+      - BACKUPPC_WEB_USER=backuppc
+      - BACKUPPC_WEB_PASSWD=backuppc
+      - USE_SSL=false
+    ports:
+      - 8080:8080

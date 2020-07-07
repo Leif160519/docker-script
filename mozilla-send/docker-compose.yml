@@ -1,0 +1,14 @@
+version: '3'
+services:
+  mozilla-send:
+    image: mozilla/send:v3.0.22
+    container_name: mozilla-send
+    restart: always
+    hostname: mozilla-send
+    environment:
+      - REDIS_HOST=localhost
+      - ANON_MAX_FILE_SIZE=5368709120
+      - ANON_MAX_EXPIRE_SECONDS=604800
+      - NODE_ENV=production
+    ports:
+      - 1443:1443

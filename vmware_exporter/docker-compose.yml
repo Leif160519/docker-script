@@ -1,0 +1,15 @@
+version: '3'
+services:
+  vmware_exporter:
+    image: pryorda/vmware_exporter:latest
+    restart: always
+    hostname: vmware_exporter
+    container_name: vmware_exporter
+    environment:
+      - VSPHERE_USER=administrator@vsphere.local
+      - VSPHERE_PASSWORD=123456
+      - VSPHERE_HOST=192.168.1.1
+      - VSPHERE_IGNORE_SSL=True
+      - VSPHERE_SPECS_SIZE=2000
+    ports:
+      - 9272:9272

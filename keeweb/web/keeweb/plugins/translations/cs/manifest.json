@@ -1,0 +1,22 @@
+{
+  "version": "1.9.0",
+  "manifestVersion": "0.1.0",
+  "name": "language-czech",
+  "description": "Czech language",
+  "author": {
+    "name": "KeeWeb",
+    "email": "antelle.net@gmail.com",
+    "url": "https://keeweb.info"
+  },
+  "license": "MIT",
+  "url": "https://plugins.keeweb.info/translations?lang=cs",
+  "resources": {
+    "loc": "QGQh8ycM1SNGeOMa+/PNC29mTVYiE/DVrFtsZVci6g34j0XfZ41e/dGyVzarv7NqLw6pelMlDbYdmrmvwPRzaNbSImvWqd71UpWPvrPXx1G1AXUleOm1AyLjvW2jDSTMs7Nxljyjb5XvnAtUuuVwOpellP/gyTxKU5qKcSRHlJ3IpGeEswDcvq5jUSMxTFmuWlZvWKRrFMXy4I0iiTzdYPkgcb54/kqiVrqeFgVWN6etflT7pyBrm/gSEW2TK1Sy17kGuivgrlhiRVZ5ZZz7KPFVVTokiATFv0GLPsXs8oYdNgwS6ZxdND1DDi/vquEOFViT3qbsSg1PqBoivO3FIQ=="
+  },
+  "locale": {
+    "name": "cs",
+    "title": "Čeština",
+    "flag": "🇨🇿"
+  },
+  "publicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnRq2k3TTx0ewTe6wDr6QVeB5diwiIWzsJD+ApfZu1KNPedcAgslAfjpNsYF1if6cYsPMJH70xJ2np6RQBl1VPdwShOuxkD7m0BD5Hw/Aar8Hdp5cvAdOOMdBO+0DbGeUMy+z66s+oUCJmqVp19T6PkkxbhN08rgtT7v+aFvrbqbO/vlsskbJpH2K2io+e1XmRGPnSr9q4KSqfGbTfe5gLwDIOFd66Z4mb5Utb5wWpsy6Gjh06Yf257AccGD3A1bkTNOyeeX0tqciYBePWMk0icP/aZ6hnErfhnUKf3tOgPLppSHiGcaSKekhChZ2xLUs3U64JwrXSmwHj+TzdO3S0QIDAQAB"
+}

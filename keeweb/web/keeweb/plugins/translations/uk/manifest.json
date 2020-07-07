@@ -1,0 +1,22 @@
+{
+  "version": "1.24.0",
+  "manifestVersion": "0.1.0",
+  "name": "language-ukrainian",
+  "description": "Ukrainian language",
+  "author": {
+    "name": "KeeWeb",
+    "email": "antelle.net@gmail.com",
+    "url": "https://keeweb.info"
+  },
+  "license": "MIT",
+  "url": "https://plugins.keeweb.info/translations?lang=uk",
+  "resources": {
+    "loc": "RrSpjuPK2EGpcVuxYJQ7ssl6zJRgKa+9mAtXMKXPdYvfz9eWP6UDtgGOGYbYPB7kx7p3YravJ84FZTMWQhQEBG+L71DlNir84SdiFYF6A9V7fFTXpWW9bYHFo6+//vev00S91EHKbhmxmS1WoBOht+1BLVHnTfG4CmxXb7jZXq6rlJGDX4VoUDCl+3+4X5OM6r6H+X8o8+dXLJtK7pE3f/ptOPFc3DaGHVhcqvdwDubrkvlY+41TTQzsxDZugRcIz/nT2HHG+u0hMOSuZ0pauTkDLgV1sdrN7lX2SkFVsbYNeW5EOPnMnO8TXxdmqZugq+5H0EnvzrBSfgAgZJzICg=="
+  },
+  "locale": {
+    "name": "uk",
+    "title": "Українська",
+    "flag": "🇺🇦"
+  },
+  "publicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnRq2k3TTx0ewTe6wDr6QVeB5diwiIWzsJD+ApfZu1KNPedcAgslAfjpNsYF1if6cYsPMJH70xJ2np6RQBl1VPdwShOuxkD7m0BD5Hw/Aar8Hdp5cvAdOOMdBO+0DbGeUMy+z66s+oUCJmqVp19T6PkkxbhN08rgtT7v+aFvrbqbO/vlsskbJpH2K2io+e1XmRGPnSr9q4KSqfGbTfe5gLwDIOFd66Z4mb5Utb5wWpsy6Gjh06Yf257AccGD3A1bkTNOyeeX0tqciYBePWMk0icP/aZ6hnErfhnUKf3tOgPLppSHiGcaSKekhChZ2xLUs3U64JwrXSmwHj+TzdO3S0QIDAQAB"
+}

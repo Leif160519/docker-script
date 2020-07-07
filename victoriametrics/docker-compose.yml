@@ -1,0 +1,15 @@
+version: '3'
+services:
+  victoria-metrics:
+    image: victoriametrics/victoria-metrics:latest
+    container_name: victoria-metrics
+    hostname: victoria-metrics
+    restart: always
+    ports:
+      - 8428:8428
+    volumes:
+      - /etc/localtime:/etc/localtime:rw
+      - /opt/applications/victoria-metrics-data:/victoria-metrics-data:rw
+    command:
+      - "-retentionPeriod=1"
+      - "-vmalert.proxyURL=http://127.0.0.1:9090"

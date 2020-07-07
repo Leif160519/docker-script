@@ -1,0 +1,24 @@
+{
+  "settings": {
+    "theme": "bl",
+    "fontSize": "1",
+    "webdavSaveMethod": "put",
+    "canCreate": false,
+    "canOpenDemo": false,
+    "canOpenSettings": false,
+    "dropbox": false,
+    "gdrive": false,
+    "onedrive": false
+  },
+  "files": [
+    {
+      "storage": "webdav",
+      "name": "linux",
+      "path": "https://127.0.0.1:8443/webdav/demo.kdbx",
+      "options": {
+        "user": "keeweb",
+    "password": "keeweb-123"
+      }
+    }
+  ]
+}

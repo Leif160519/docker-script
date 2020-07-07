@@ -1,0 +1,22 @@
+{
+  "version": "1.32.0",
+  "manifestVersion": "0.1.0",
+  "name": "language-polish",
+  "description": "Polish language",
+  "author": {
+    "name": "KeeWeb",
+    "email": "antelle.net@gmail.com",
+    "url": "https://keeweb.info"
+  },
+  "license": "MIT",
+  "url": "https://plugins.keeweb.info/translations?lang=pl",
+  "resources": {
+    "loc": "J1CxLTv7W+O7cNWVl2oXFjPYUTofWEA+yh3P25yvPWUURMVOc/w6ZVffkTQIfEsLhpMtqaTnHsk+D5qohZVc9W1kQtTJZ5TSCrbxVfbn2WRG3GyVT7tybHZ3fwWMdl7R9VGirFnQwG6e5AsLkSl2lO2wSIjw27CyGYHyAuUA7w9w6y203uvms9aIDS9CUJF4h0b2tHQ5j4XPXfYCFrS3gFUdRsxKhuiDBhGZnfF5wUM6HIWXv8KK9jhAvhZnxH3yrPnhvILpx1ozN8f4XVsu+DdfQGi7WXYw8nIj/qDww5L2qSfYgC5mvubbSAe5Ms0iwL+FKnr/lK6U9K/Ub+8fDg=="
+  },
+  "locale": {
+    "name": "pl",
+    "title": "Polski",
+    "flag": "🇵🇱"
+  },
+  "publicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnRq2k3TTx0ewTe6wDr6QVeB5diwiIWzsJD+ApfZu1KNPedcAgslAfjpNsYF1if6cYsPMJH70xJ2np6RQBl1VPdwShOuxkD7m0BD5Hw/Aar8Hdp5cvAdOOMdBO+0DbGeUMy+z66s+oUCJmqVp19T6PkkxbhN08rgtT7v+aFvrbqbO/vlsskbJpH2K2io+e1XmRGPnSr9q4KSqfGbTfe5gLwDIOFd66Z4mb5Utb5wWpsy6Gjh06Yf257AccGD3A1bkTNOyeeX0tqciYBePWMk0icP/aZ6hnErfhnUKf3tOgPLppSHiGcaSKekhChZ2xLUs3U64JwrXSmwHj+TzdO3S0QIDAQAB"
+}

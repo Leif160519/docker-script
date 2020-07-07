@@ -1,0 +1,3 @@
+[submodule "kminion/redpanda-data.kminion"]
+	path = kminion/redpanda-data.kminion
+	url = https://github.com/redpanda-data/kminion.git

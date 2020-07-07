@@ -1,0 +1,22 @@
+{
+  "version": "1.13.0",
+  "manifestVersion": "0.1.0",
+  "name": "language-portuguese-brazil",
+  "description": "Portuguese (Brazil) language",
+  "author": {
+    "name": "KeeWeb",
+    "email": "antelle.net@gmail.com",
+    "url": "https://keeweb.info"
+  },
+  "license": "MIT",
+  "url": "https://plugins.keeweb.info/translations?lang=pt-BR",
+  "resources": {
+    "loc": "cJujaqnO9VnK8WdkL4yVEodUyavyJYkoDStHrFJvZZZz9MyfhyUOknBHZsZ7gv/To+sgwKiLGHntC1BEYybNEKmQs+68Sbxuvork2XE3+8Bm6Yu9sEDGdLRX/jLEAlhPTawWFYTI4CyBb1t3zdC/DYFli71oNfVxujDMKGKqi92FEAo4sJMmpbvUKDcFnJpQbxDut0BVdjBtqppdX90ND0OWv1NRQIP1hgtf7VWKxBGCqW/+PFNi0RlpJWamV+Dx/X1kqNxPneVaFLLYjr+mFVpUIk3nyoLCZpqXgxSAXGvmABxauIsyLp1C5MXiyJb3MW7MIbRvfpT/YfjYRIMf2w=="
+  },
+  "locale": {
+    "name": "pt-BR",
+    "title": "Português (Brasil)",
+    "flag": "🇧🇷"
+  },
+  "publicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnRq2k3TTx0ewTe6wDr6QVeB5diwiIWzsJD+ApfZu1KNPedcAgslAfjpNsYF1if6cYsPMJH70xJ2np6RQBl1VPdwShOuxkD7m0BD5Hw/Aar8Hdp5cvAdOOMdBO+0DbGeUMy+z66s+oUCJmqVp19T6PkkxbhN08rgtT7v+aFvrbqbO/vlsskbJpH2K2io+e1XmRGPnSr9q4KSqfGbTfe5gLwDIOFd66Z4mb5Utb5wWpsy6Gjh06Yf257AccGD3A1bkTNOyeeX0tqciYBePWMk0icP/aZ6hnErfhnUKf3tOgPLppSHiGcaSKekhChZ2xLUs3U64JwrXSmwHj+TzdO3S0QIDAQAB"
+}

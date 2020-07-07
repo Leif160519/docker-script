@@ -1,0 +1,20 @@
+version: '3'
+services:
+  minio:
+    image: minio/minio:latest
+    restart: always
+    network_mode: host
+    container_name: minio
+    environment:
+      - "MINIO_ROOT_USER=admin"
+      - "MINIO_ROOT_PASSWORD=password"
+      - "MINIO_PROMETHEUS_AUTH_TYPE=public"
+    ports:
+      - 9000:9000
+      - 9001:9001
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - /minio/data:/data:rw
+      - /minio/config:/root/.minio:rw
+      - /minio/metrics:/minio/v2/metrics/cluster:rw
+    command: server /data --console-address ":9001"

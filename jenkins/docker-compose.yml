@@ -1,0 +1,16 @@
+version: '3'
+services:
+  jenkins:
+    image: jenkins/jenkins:2.356
+    container_name: jenkins
+    hostname: jenkins
+    restart: always
+    user: root
+    ports:
+      - 8088:8080
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /data/jenkins/jenkins_home:/var/jenkins_home:rw
+    environment:
+      - "JENKINS_OPTS=--webroot=/var/jenkins_home/war --httpPort=8080 --sessionTimeout=1440 --sessionEviction=1440"
+      - "JAVA_OPTS=-Djava.awt.headless=true -Dfile.encoding=UTF-8"

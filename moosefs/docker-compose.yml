@@ -1,0 +1,162 @@
+version: '3'
+services:
+  mfsmaster:
+    image: moosefs/master:latest
+    container_name: mfsmaster
+    hostname: mfsmaster
+    restart: always
+    networks:
+      moosefsnet:
+        ipv4_address: 198.18.4.2
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./data/master/meta:/var/lib/mfs
+    environment:
+      - MFS_ENV=TEST
+    ports:
+      - 9421:9421
+
+  mfscgi:
+    image: moosefs/cgi:latest
+    container_name: mfscgi
+    hostname: mfscgi
+    restart: always
+    networks:
+      moosefsnet:
+        ipv4_address: 198.18.4.3
+    volumes:
+      - /etc/localtime:/etc/localtime
+    ports:
+      - 9425:9425
+    depends_on:
+      - mfsmaster
+
+  mfsmetalogger:
+    image: moosefs/metalogger
+    container_name: mfsmetalogger
+    hostname: mfsmetalogger
+    restart: always
+    networks:
+      moosefsnet:
+        ipv4_address: 198.18.4.4
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./data/metalogger/meta:/var/lib/mfs
+    environment:
+      - MFS_ENV=TEST
+    depends_on:
+      - mfsmaster
+
+  mfschunkserver1:
+    image: moosefs/chunkserver:latest
+    container_name: mfschunkserver1
+    hostname: mfschunkserver1
+    restart: always
+    environment:
+      - LABELS=M
+      #- SIZE=100
+    links:
+      - mfsmaster
+    networks:
+      moosefsnet:
+        ipv4_address: 198.18.4.11
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./data/cs1/hdd0:/mnt/hdd0
+      - ./data/cs1/meta:/var/lib/mfs
+    depends_on:
+      - mfsmaster
+
+  mfschunkserver2:
+    image: moosefs/chunkserver:latest
+    container_name: mfschunkserver2
+    hostname: mfschunkserver2
+    restart: always
+    environment:
+      - LABELS=M,B
+      #- SIZE=100
+    links:
+      - mfsmaster
+    networks:
+      moosefsnet:
+        ipv4_address: 198.18.4.12
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./data/cs2/hdd0:/mnt/hdd0
+      - ./data/cs2/meta:/var/lib/mfs
+    depends_on:
+      - mfsmaster
+
+  mfschunkserver3:
+    image: moosefs/chunkserver:latest
+    container_name: mfschunkserver3
+    hostname: mfschunkserver3
+    restart: always
+    environment:
+      - LABELS=M,B
+      #- SIZE=100
+    links:
+      - mfsmaster
+    networks:
+      moosefsnet:
+        ipv4_address: 198.18.4.13
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./data/cs3/hdd0:/mnt/hdd0
+      - ./data/cs3/meta:/var/lib/mfs
+    depends_on:
+      - mfsmaster
+
+  mfschunkserver4:
+    image: moosefs/chunkserver:latest
+    container_name: mfschunkserver4
+    hostname: mfschunkserver4
+    restart: always
+    environment:
+      - LABELS=B
+      #- SIZE=100
+    links:
+      - mfsmaster
+    networks:
+      moosefsnet:
+        ipv4_address: 198.18.4.14
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./data/cs4/hdd0:/mnt/hdd0
+      - ./data/cs4/meta:/var/lib/mfs
+    depends_on:
+      - mfsmaster
+
+  mfsclient:
+    image: moosefs/client:latest
+    container_name: mfsclient
+    hostname: mfsclient
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime
+    cap_add:
+      - SYS_ADMIN
+    devices:
+      - /dev/fuse:/dev/fuse
+    security_opt:
+      - apparmor:unconfined
+    stdin_open: true
+    tty: true
+    links:
+      - mfsmaster
+    networks:
+      moosefsnet:
+        ipv4_address: 198.18.4.100
+    depends_on:
+      - mfsmaster
+      - mfschunkserver1
+      - mfschunkserver2
+      - mfschunkserver3
+      - mfschunkserver4
+
+networks:
+  moosefsnet:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 198.18.4.0/24

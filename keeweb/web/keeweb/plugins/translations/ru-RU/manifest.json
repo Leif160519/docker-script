@@ -1,0 +1,22 @@
+{
+  "version": "1.29.0",
+  "manifestVersion": "0.1.0",
+  "name": "language-russian",
+  "description": "Russian language",
+  "author": {
+    "name": "KeeWeb",
+    "email": "antelle.net@gmail.com",
+    "url": "https://keeweb.info"
+  },
+  "license": "MIT",
+  "url": "https://plugins.keeweb.info/translations?lang=ru-RU",
+  "resources": {
+    "loc": "gbJk5QuODlGBxRpJ5CoMNFcWF40ZDr4CwzGJckIoLSe8TdUg1ymZNR0vgvEcgwts7FEw9617mqROtjYy3UjMBsIi6CDA5SdCwi/ii7c7S5DaUIgljajo2ZojBsD9rjmkVMwBS/QjUlagEwSW4xZTmHWNy9s64HJmqW4lo1ekto/TEt3mTKwL1AnJYd9sOJWlu9vr2D3H6xKfi3SNrSmGTNY4l9T/zb/cPVmYZ/EKNh9zjBWxBqDYuDlEQO0JqMGk8bOAuZzE83Ppi5tbCUmPPsMpn3Rpv1rTWwAbFcI1B9M8+l1tPKH8cpej2a/KjZsr0ExnwhWRj8FqhxDKulB+Lg=="
+  },
+  "locale": {
+    "name": "ru-RU",
+    "title": "Русский",
+    "flag": "🇷🇺"
+  },
+  "publicKey": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnRq2k3TTx0ewTe6wDr6QVeB5diwiIWzsJD+ApfZu1KNPedcAgslAfjpNsYF1if6cYsPMJH70xJ2np6RQBl1VPdwShOuxkD7m0BD5Hw/Aar8Hdp5cvAdOOMdBO+0DbGeUMy+z66s+oUCJmqVp19T6PkkxbhN08rgtT7v+aFvrbqbO/vlsskbJpH2K2io+e1XmRGPnSr9q4KSqfGbTfe5gLwDIOFd66Z4mb5Utb5wWpsy6Gjh06Yf257AccGD3A1bkTNOyeeX0tqciYBePWMk0icP/aZ6hnErfhnUKf3tOgPLppSHiGcaSKekhChZ2xLUs3U64JwrXSmwHj+TzdO3S0QIDAQAB"
+}
