@@ -7,5 +7,5 @@ docker run -d  --name mysql\
      -e TZ=Asia/Shanghai \
      --restart=always \
      -v ${config_dir}/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf \
-     mysql
+     mysql:5.7.28
 exit
