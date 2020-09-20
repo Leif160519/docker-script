@@ -1,0 +1,14 @@
+version: '3'
+services:
+  jenkins:
+    image: java:8
+    container_name: jenkins
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /data/jenkins/jenkins.war:/root/jenkins.war
+      - /data/jenkins/.jenkins:/root/.jenkins:rw
+    command: /usr/bin/java -jar /root/jenkins.war --httpPort=80
+    network_mode: bridge
