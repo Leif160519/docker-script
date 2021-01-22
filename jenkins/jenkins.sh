@@ -1,7 +1,7 @@
 #!/usr/bin/env bash 
 config_dir=`pwd`
 docker run -d  --name jenkins\
-     -p 8080:8080 \
+     -p 80:8080 \
      -e TZ=Asia/Shanghai \
      --restart=always \
      -v ${config_dir}/jenkins.war:/root/jenkins.war \

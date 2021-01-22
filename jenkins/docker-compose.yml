@@ -5,7 +5,7 @@ services:
     container_name: jenkins
     restart: always
     ports:
-      - 80:80
+      - 80:8080
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /data/jenkins/.jenkins:/root/.jenkins:rw
