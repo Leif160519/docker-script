@@ -1,4 +1,4 @@
-#!/usr/bin/env bash 
+#!/usr/bin/env bash
 docker run -d --name mysql\
      -e MYSQL_USER=sonar \
      -e MYSQL_PASSWORD=sonar \
