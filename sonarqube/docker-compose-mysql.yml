@@ -22,6 +22,7 @@ services:
       - 9000:9000
     volumes:
       - /etc/localtime:/etc/localtime:ro
+      - ./sonar-l10n-zh-plugin-1.28.jar:/opt/sonarqube/extensions/plugins/sonar-l10n-zh-plugin-1.28.jar:ro
     environment:
       - "sonar.jdbc.username=sonar"
       - "sonar.jdbc.password=sonar"
