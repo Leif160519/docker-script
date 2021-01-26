@@ -7,5 +7,5 @@ docker run -d  --name jenkins\
      -v ${config_dir}/jenkins.war:/root/jenkins.war \
      -v ${config_dir}/.jenkins:/root/.jenkins \
      java:8 \
-     /usr/bin/java -jar /root/jenkins.war --httpPort=8080
+     /usr/bin/java -Djava.awt.headless=true -Xms1024m -Xmx2048m -XX:PermSize=256m -XX:MaxPermSize=512m -jar /root/jenkins.war --webroot=/var/cache/jenkins/war --httpPort=8080
 exit
