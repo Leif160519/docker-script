@@ -20,3 +20,6 @@ sed -i "s/^#sonar.ce.javaOpts=/csonar.ce.javaOpts=-Xmx3036m -Xms1024m -XX:+HeapD
 ```
 
 参考:[Sonar问题解决：OutOfMemoryError:Java heap space(linux)](https://zhuanlan.zhihu.com/p/128500015)
+
+### 3
+若使用的是mysql作为sonarqube的数据存储，在分析后失败，报错`outofmemory`的，一般是sql语句的字节数超过了mysql的限制导致的，建议在mysql的配置文件中改大`max_allowed_packet`的值即可解决。
