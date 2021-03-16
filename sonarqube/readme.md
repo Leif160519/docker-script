@@ -24,6 +24,10 @@ sed -i "s/^#sonar.ce.javaOpts=/csonar.ce.javaOpts=-Xmx3036m -Xms1024m -XX:+HeapD
 ### 3
 若使用的是mysql作为sonarqube的数据存储，在分析后失败，报错`outofmemory`的，一般是sql语句的字节数超过了mysql的限制导致的，建议在mysql的配置文件中改大`max_allowed_packet`的值即可解决。
 
+### 4
+运行提示`chown: /opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-1.6.0.jar: Read-only file system`:
+请把`docker-compose.yml`文件中的`ro`改成`rw`，重新构建容器即可
+
 ## 三、Supported tags and respective Dockerfile links(2021-03-15)
 
 - 7.9.6-community, 7.9-community, lts
