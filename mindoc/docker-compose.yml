@@ -1,0 +1,46 @@
+version: "3.3"
+services:
+  mysql:
+    image: mysql:5.7.28
+    container_name: mysql
+    restart: always
+    hostname: mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - TZ=Asia/Shanghai
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./mysql/conf/mysqld.conf:/etc/mysql/mysql.conf.d/mysqld.cnf:rw
+      - ./mysql/data:/var/lib/mysql:re
+
+  mindoc:
+    image: registry.cn-hangzhou.aliyuncs.com/mindoc-org/mindoc:v2.1
+    environment:
+      TZ: Asia/Shanghai
+    restart: always
+    hostname: mindoc
+    container_name: mindoc
+    ports:
+      - "8181:8181"
+    volumes:
+      - ./mindoc/conf:/mindoc/conf
+      - ./mindoc/static:/mindoc/static
+      - ./mindoc/views:/mindoc/views
+      - ./mindoc/uploads:/mindoc/uploads
+      - ./mindoc/runtime:/mindoc/runtime
+      - ./mindoc/database:/mindoc/database
+    environment:
+      - MINDOC_RUN_MODE=prod
+      - MINDOC_DB_ADAPTER=mysql
+      - MINDOC_DB_HOST=mysql
+      - MINDOC_DB_PORT=3306
+      - MINDOC_DB_DATABASE=mindoc_db
+      - MINDOC_DB_USERNAME=root
+      - MINDOC_DB_PASSWORD=123456
+      - MINDOC_CACHE=true
+      - MINDOC_CACHE_PROVIDER=file
+      - MINDOC_ENABLE_EXPORT=true
+    depends_on:
+      - mysql
