@@ -3,12 +3,12 @@ port=3306
 federated
 max_connections = 2000
 max_allowed_packet = 64M
-pid-file	= /var/run/mysqld/mysqld.pid
-socket		= /var/run/mysqld/mysqld.sock
-datadir		= /var/lib/mysql
-#log-error	= /var/log/mysql/error.log
+pid-file        = /var/run/mysqld/mysqld.pid
+socket          = /var/run/mysqld/mysqld.sock
+datadir         = /var/lib/mysql
+# log-error     = /var/log/mysql/error.log
 # By default we only accept connections from localhost
-#bind-address	= 127.0.0.1
+#bind-address   = 127.0.0.1
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
 #限制mysql内存占用
@@ -19,6 +19,7 @@ symbolic-links=0
 character-set-server=utf8
 collation-server=utf8_general_ci
 skip-character-set-client-handshake
+lower_case_table_names=1
 
 [client]
 default-character-set=utf8
@@ -31,4 +32,3 @@ default-character-set=utf8
 
 [mysqld_safe]
 default-character-set=utf8
-

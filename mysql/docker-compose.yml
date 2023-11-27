@@ -4,6 +4,7 @@ services:
     image: mysql:5.7.28
     container_name: mysql
     restart: always
+    hostname: mysql
     ports:
       - 3306:3306
     environment:
@@ -11,5 +12,6 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./mysqld.conf:/etc/mysql/mysql.conf.d/mysqld.cnf:rw
+      - ./conf/mysqld.conf:/etc/mysql/mysql.conf.d/mysqld.cnf:rw
+      - ./data:/var/lib/mysql:re
     network_mode: bridge
