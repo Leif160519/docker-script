@@ -6,7 +6,7 @@ services:
     hostname: keeweb
     restart: always
     ports:
-      - 8443:443
+      - 443:443
     volumes:
       - /etc/localtime:/etc/localtime:rw
       - ./ssl:/etc/nginx/external:rw

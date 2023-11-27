@@ -1,3 +1,7 @@
+# 功能包含
+- webdav服务(可上传和下载)
+- nginx服务(只能下载kdbx文件)
+
 # 文件结构
 ```
 keeweb
@@ -54,3 +58,6 @@ pid        /var/run/nginx.pid;
 
 ## 3.设置webdav之后，无法保存，提示403
 在存储部分，将`上传一个临时文件并移动`改为`已PUT方式覆盖文件`即可
+
+## 4.配置https://127.0.0.1:8444/webdav/xxx.kdbx是提示network error
+是nginx跨域了，按照keeweb.conf中444的配置添加跨域请求头即可
