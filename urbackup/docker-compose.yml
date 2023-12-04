@@ -1,0 +1,15 @@
+version: "3"
+services:
+  urbackup:
+    image: uroni/urbackup-server:latest
+    hostname: urbackup
+    container_name: urbackup
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./backup:/backups:rw
+      - ./db:/var/urbackup:rw
+    network_mode: host
