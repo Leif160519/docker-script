@@ -13,5 +13,5 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./conf/mysqld.conf:/etc/mysql/mysql.conf.d/mysqld.cnf:rw
-      - ./data:/var/lib/mysql:re
+      - ./data:/var/lib/mysql:rw
     network_mode: bridge
