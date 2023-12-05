@@ -1,0 +1,46 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.7.28
+    container_name: mysql
+    restart: always
+    hostname: mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - TZ=Asia/Shanghai
+    healthcheck:
+      test: "mysql -h127.0.0.1 -P3306 -uroot -p123456 -e 'show databases;create database if not exists redmine_production;'"
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./mysql/conf/my.cnf:/etc/mysql/my.cnf:rw
+      - ./mysql/data:/var/lib/mysql:rw
+
+  redmine:
+    image: sameersbn/redmine:5.1.1
+    restart: always
+    hostname: redmine
+    container_name: redmine
+    ports:
+      - 8080:80
+    healthcheck:
+      test: "curl -fsL http://localhost > /dev/null"
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    environment:
+      - DB_ADAPTER=mysql2
+      - DB_HOST=mysql
+      - DB_NAME=redmine_production
+      - DB_USER=root
+      - DB_PASS=123456
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./redmine/data:/home/redmine/data
+      - ./redmine/logs:/var/log/redmine
+    depends_on:
+      - mysql
