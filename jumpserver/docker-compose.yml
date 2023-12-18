@@ -44,7 +44,7 @@ services:
         ipv4_address: 172.16.238.3
 
   core:
-    image: jumpserver/core:v2.28.20
+    image: jumpserver/core:v2.28.21
     container_name: jms_core
     hostname: jms_core
     restart: always
@@ -80,7 +80,7 @@ services:
         ipv4_address: 172.16.238.4
 
   celery:
-    image: jumpserver/core:v2.28.20
+    image: jumpserver/core:v2.28.21
     container_name: jms_celery
     hostname: jms_celery
     restart: always
@@ -117,7 +117,7 @@ services:
         ipv4_address: 172.16.238.5
 
   koko:
-    image: jumpserver/koko:v2.28.20
+    image: jumpserver/koko:v2.28.21
     container_name: jms_koko
     hostname: jms_koko
     restart: always
@@ -144,7 +144,7 @@ services:
         ipv4_address: 172.16.238.6
 
   lion:
-    image: jumpserver/lion:v2.28.20
+    image: jumpserver/lion:v2.28.21
     container_name: jms_lion
     hostname: jms_lion
     restart: always
@@ -168,7 +168,7 @@ services:
         ipv4_address: 172.16.238.7
 
   magnus:
-    image: jumpserver/magnus:v2.28.20
+    image: jumpserver/magnus:v2.28.21
     container_name: jms_magnus
     hostname: jms_magnus
     restart: always
@@ -199,7 +199,7 @@ services:
         ipv4_address: 172.16.238.8
 
   web:
-    image: jumpserver/web:v2.28.20
+    image: jumpserver/web:v2.28.21
     container_name: jms_web
     hostname: jms_web
     restart: always
