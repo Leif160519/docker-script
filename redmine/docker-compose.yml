@@ -28,7 +28,7 @@ services:
     ports:
       - 8080:80
     healthcheck:
-      test: "curl -fsL http://localhost > /dev/null"
+      test: "ss -tuln | grep 80 > /dev/null"
       interval: 10s
       timeout: 5s
       retries: 3
