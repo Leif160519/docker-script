@@ -42,5 +42,6 @@ services:
       - MINDOC_CACHE=true
       - MINDOC_CACHE_PROVIDER=file
       - MINDOC_ENABLE_EXPORT=true
+      - MINDOC_SESSION_MAX_LIFETIME=86400
     depends_on:
       - mysql

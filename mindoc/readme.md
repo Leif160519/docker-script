@@ -6,4 +6,4 @@
 https://zhuanlan.zhihu.com/p/651736429?utm_id=0
 
 ## 注意
-- 其他配置修改可以直接修改./mindoc/conf/app.conf文件，重启容器即可
+- 其他配置修改可以直接修改./mindoc/conf/app.conf文件，配置文件会自动重载
