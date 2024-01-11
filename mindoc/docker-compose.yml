@@ -14,6 +14,11 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./mysql/conf/mysqld.conf:/etc/mysql/mysql.conf.d/mysqld.cnf:rw
       - ./mysql/data:/var/lib/mysql:re
+    healthcheck:
+      test: "mysql -h127.0.0.1 -P3306 -e 'show databases;create database if not exists mindoc_db;'"
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   mindoc:
     image: registry.cn-hangzhou.aliyuncs.com/mindoc-org/mindoc:v2.1
@@ -43,5 +48,10 @@ services:
       - MINDOC_CACHE_PROVIDER=file
       - MINDOC_ENABLE_EXPORT=true
       - MINDOC_SESSION_MAX_LIFETIME=86400
+    healthcheck:
+      test: "curl -fsL http://localhost:8181 > /dev/null"
+      interval: 10s
+      timeout: 5s
+      retries: 3
     depends_on:
       - mysql
