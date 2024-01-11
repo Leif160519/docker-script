@@ -47,7 +47,6 @@ services:
       - MINDOC_CACHE=true
       - MINDOC_CACHE_PROVIDER=file
       - MINDOC_ENABLE_EXPORT=true
-      - MINDOC_SESSION_MAX_LIFETIME=86400
     healthcheck:
       test: "curl -fsL http://localhost:8181 > /dev/null"
       interval: 10s
