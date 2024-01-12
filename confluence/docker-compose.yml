@@ -1,0 +1,45 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:8.0.33
+    container_name: mysql
+    restart: always
+    hostname: mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+    healthcheck:
+      test: "mysql -h127.0.0.1 -P3306 -uroot -p123456 -e 'SHOW DATABASES;create database if not exists confluence;'"
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    volumes:
+      - /etc/localtime:/etc/localtime:rw
+      - ./mysql/conf/my.cnf:/etc/mysql/my.cnf:rw
+      - ./mysql/data:/var/lib/mysql:rw
+
+  confluence:
+    image: atlassian/confluence-server:8.5.2
+    container_name: confluence
+    hostname: confluence
+    restart: always
+    volumes:
+      - ./atlassian-agent.jar:/var/atlassian/atlassian-agent.jar
+      - ./mysql-connector-java-8.0.22.jar:/opt/atlassian/confluence/confluence/WEB-INF/lib/mysql-connector-java-8.0.22.jar
+      - ./confluence/data:/var/atlassian/application-data/confluence
+    environment:
+      - TZ=Asia/Shanghai
+      - JAVA_OPTS="-javaagent:/var/atlassian/atlassian-agent.jar"
+      - JVM_MINIMUM_MEMORY=4096m
+      - JVM_MAXIMUM_MEMORY=4096m
+      - JVM_RESERVED_CODE_CACHE_SIZE=512m
+    ports:
+      - "8090:8090"
+    healthcheck:
+      test: "curl -fsL http://localhost:8090 > /dev/null"
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    depends_on:
+      - mysql
