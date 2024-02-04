@@ -36,6 +36,7 @@ services:
       - ./mindoc/uploads:/mindoc/uploads
       - ./mindoc/runtime:/mindoc/runtime
       - ./mindoc/database:/mindoc/database
+      - ./mindoc/calibre:/opt/calibre
     environment:
       - MINDOC_RUN_MODE=prod
       - MINDOC_DB_ADAPTER=mysql

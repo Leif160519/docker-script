@@ -1,3 +1,13 @@
+## 前置条件
+```
+mkdir ./mindoc/calibre
+cd ./mindoc/calibre
+wget https://download.calibre-ebook.com/5.44.0/calibre-5.44.0-x86_64.txz
+tar xJof calibre-5.44.0-x86_64.txz
+find calibre-5.44.0-x86_64.txz -delete
+```
+> 参考：https://github.com/mindoc-org/mindoc/issues/807
+
 ## 使用方法
 浏览器登录http://127.0.0.1:8181
 初始账户：admin 密码：123456
