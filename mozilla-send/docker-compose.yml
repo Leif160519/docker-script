@@ -10,5 +10,8 @@ services:
       - ANON_MAX_FILE_SIZE=5368709120
       - ANON_MAX_EXPIRE_SECONDS=604800
       - NODE_ENV=production
+    volumes:
+      - ./tmp:/tmp:rw
+    user: root
     ports:
       - 1443:1443
