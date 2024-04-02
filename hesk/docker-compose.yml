@@ -12,7 +12,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime
     healthcheck:
-       test: "curl -fsL http://localhost > /dev/null"
+       test: "curl -fsL http://localhost/hesk > /dev/null"
        interval: 10s
        timeout: 5s
        retries: 3
