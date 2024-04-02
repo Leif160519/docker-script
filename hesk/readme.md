@@ -5,12 +5,16 @@ hesk
 ├── docker-compose.yml
 ├── Dockerfile
 ├── hesk345.zip
+├── mysql
+│   └── conf
+│       └── my.cnf
 ├── readme.md
 └── zh_cmn_hans.zip
 ```
 
 - hesk345.zip: hesk免费版安装包
 - zh_cmn_hans.zip: hesk中文汉化包
+- my.cnf: mysql数据库配置文件
 
 ## 使用方法
 ```
