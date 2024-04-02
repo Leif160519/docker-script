@@ -12,6 +12,16 @@ hesk
 - hesk345.zip: hesk免费版安装包
 - zh_cmn_hans.zip: hesk中文汉化包
 
+## 使用方法
+```
+docker-compose up -d
+```
+
+## 运行效果
+```
+2622492356ee        hesk_hesk-app                                              "/usr/sbin/httpd -..."   16 minutes ago      Up 16 minutes (unhealthy)      0.0.0.0:8999->80/tcp                       hesk-app
+6f94f5828143        mysql:5.7.28                                               "docker-entrypoint..."   About an hour ago   Up About an hour (healthy)     33060/tcp, 0.0.0.0:32773->3306/tcp         hesk-mysql
+```
 
 ## 参考资料
 - [安装部署一套免费的HESK服务台工单系统][1]
