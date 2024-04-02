@@ -1,0 +1,42 @@
+version: '3'
+services:
+  hesk-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: hesk-app
+    container_name: hesk-app
+    restart: always
+    ports:
+      - "8999:80"
+    volumes:
+      - /etc/localtime:/etc/localtime
+    healthcheck:
+       test: "curl -fsL http://localhost > /dev/null"
+       interval: 10s
+       timeout: 5s
+       retries: 3
+    depends_on:
+      - hesk-mysql
+
+  hesk-mysql:
+    image: mysql:5.7.28
+    container_name: hesk-mysql
+    restart: always
+    hostname: hesk-mysql
+    ports:
+      - 3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_USER=hesk
+      - MYSQL_PASSWORD=hesk
+      - MYSQL_DATABASE=hesk
+    healthcheck:
+      test: "mysql -h127.0.0.1 -P3306 -uroot -p123456 -e 'SHOW DATABASES;create database if not exists hesk;'"
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    volumes:
+      - /etc/localtime:/etc/localtime:rw
+      - ./mysql/conf/my.cnf:/etc/mysql/my.cnf:rw
+      - ./mysql/data:/var/lib/mysql:rw
