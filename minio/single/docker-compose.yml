@@ -3,7 +3,6 @@ services:
   minio:
     image: minio/minio:latest
     restart: always
-    network_mode: host
     container_name: minio
     environment:
       - "MINIO_ROOT_USER=admin"
