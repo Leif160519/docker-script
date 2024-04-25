@@ -3,16 +3,26 @@ services:
   minio:
     image: minio/minio:latest
     restart: always
+    hostname: minio
     container_name: minio
     environment:
       - "MINIO_ROOT_USER=admin"
-      - "MINIO_ROOT_PASSWORD=password"
-      - "MINIO_PROMETHEUS_AUTH_TYPE=public"
+      - "MINIO_ROOT_PASSWORD=admin-123"
+      - "MINIO_CACHE=on"
+      - "MINIO_CACHE_DRIVES=/mnt/cache"
+      - "MINIO_CACHE_EXPIRY=10"
+      - "MINIO_CACHE_QUOTA=80"
+      - "MINIO_CACHE_EXCLUDE='*.pdf,*.png,*.jpg'"
+      - "MINIO_CACHE_AFTER=3"
+      - "MINIO_CACHE_COMMENT=writethrough"
+      - "MINIO_CACHE_WATERMARK_LOW=70"
+      - "MINIO_CACHE_WATERMARK_HIGH=90"
     ports:
       - 9000:9000
       - 9001:9001
     volumes:
       - /etc/localtime:/etc/localtime
+      - /minio/cache:/mnt/cache:rw
       - /minio/data:/data:rw
       - /minio/config:/root/.minio:rw
       - /minio/metrics:/minio/v2/metrics/cluster:rw
