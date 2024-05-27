@@ -41,3 +41,4 @@ sed -i "s/^#sonar.ce.javaOpts=/csonar.ce.javaOpts=-Xmx3036m -Xms1024m -XX:+HeapD
 - [The Chinese translation pack for SonarQube](https://github.com/xuhuisheng/sonar-l10n-zh)
 - [plugin installed, still sonarq reports "Current edition does not support branch feature"](https://github.com/mc1arke/sonarqube-community-branch-plugin/issues/663)
 - [Sonarqube Community Branch Plugin](https://github.com/mc1arke/sonarqube-community-branch-plugin)
+- [SonarQube配置LDAP认证集成](https://www.cnblogs.com/mascot1/p/9963594.html)
