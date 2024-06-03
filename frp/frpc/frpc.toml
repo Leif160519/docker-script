@@ -1,4 +1,4 @@
-serverAddr = 1.2.3.4      # 服务端ip
+serverAddr = '1.2.3.4'    # 服务端ip
 serverPort = 7000         # 服务端端口
 auth.method = 'token'     # 客户端访问验证方式
 auth.token = '654321'     # 客户端访问验证密码
