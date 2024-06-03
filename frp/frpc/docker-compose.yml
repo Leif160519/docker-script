@@ -1,0 +1,11 @@
+version: '3'
+services:
+  frpc:
+    image: snowdreamtech/frpc:latest
+    hostname: frpc
+    container_name: frpc
+    restart: always
+    network_mode: host
+    volumes:
+     - ./frpc.toml:/etc/frp/frpc.toml
+     - /etc/localtime:/etc/localtime
