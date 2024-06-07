@@ -21,6 +21,10 @@ hesk
 docker-compose up -d
 ```
 
+## 初始化安装
+浏览器访问：https://hesk.github.icu/hesk/install,点击click hear to install hesk，按照提示操作即可
+设置好数据库后，exec到pod中删除install目录，刷新网页即可进入hesk
+
 ## 运行效果
 ```
 f23cd7f3c911        hesk_hesk-app                                              "/usr/sbin/httpd -..."   3 minutes ago       Up 3 minutes (healthy)       0.0.0.0:8999->80/tcp                       hesk-app
