@@ -119,17 +119,7 @@ server {
 }
 ```
 
-> 此方法无法实现301重定向功能，除非直接进入jms_web容器，在/etc/nginx/conf.d/default.conf中80端口部分添加301重定向配置
-```
-server {
-    listen 80;
-    # listen [::]:80;
-    server_name jumpserver.example.com;
-    return 301 https://$server_name$request_uri;
-
-    client_max_body_size 5000m;
-...
-```
+> 此方法无法实现301重定向功能
 
 ## 参考资料
 - [在 docker 环境下部署运行 JumpServer 堡垒机][1]
