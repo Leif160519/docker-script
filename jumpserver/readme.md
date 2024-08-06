@@ -28,7 +28,7 @@ fi
 ```
 
 ## 反向代理2222和其他终端链接端口
-- jumpserver(docker部署)与nginx(非docker部署)不在同一台机器上
+### jumpserver(docker部署)与nginx(非docker部署)不在同一台机器上
 
 1.在nginx服务器上的/etc/nginx/nginx.conf中添加如下内容：
 ```
@@ -68,7 +68,7 @@ stream {
 
 > 10.200.0.230修改为实际ip地址
 
-- jumpserver(docker部署)和nginx(非docker部署)在同一台机器上
+### jumpserver(docker部署)和nginx(非docker部署)在同一台机器上
 
 1.docker-compose.yml的web部分添加如下内容
 ```
