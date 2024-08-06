@@ -27,8 +27,9 @@ if [ "$BOOTSTRAP_TOKEN" = "" ];then
 fi
 ```
 
-## 反向代理2222和其他终端链接端口(jumpserver与nginx(非docker部署)不为同一个)
-在/etc/nginx/nginx.conf中添加如下内容：
+## 反向代理2222和其他终端链接端口
+- jumpserver(docker部署)与nginx(非docker部署)不在同一台机器上
+在nginx服务器上的/etc/nginx/nginx.conf中添加如下内容：
 ```
 stream {
     server {
@@ -61,8 +62,57 @@ stream {
     }
 }
 ```
+> 10.200.0.230修改为实际ip地址
 
-若jumpserver和nginx(非docker部署)在同一个,则`nginx/conf.d/jumpserver.conf`中留下443的配置即可
+- jumpserver(docker部署)和nginx(非docker部署)在同一台机器上
+docker-compose.yml的web部分添加如下内容
+```
+...
+    volumes:
+      - /etc/localtime:/etc/localtime:rw
+      - ./core/data:/opt/jumpserver/data
+      - ./nginx/data/logs:/var/log/nginx
+      - ./nginx/conf.d/jumpserver.conf:/etc/nginx/conf.d/jumpserver.conf  # 挂载jumpserver域名反向代理配置
+      - ./nginx/ssl:/etc/nginx/ssl                                        # 挂载ssl证书目录
+    ports:
+      - 80:80
+      - 443:443
+...
+```
+
+`nginx/conf.d/jumpserver.conf`中留下443的配置即可
+```
+server {
+    listen 443 ssl;
+    server_name jumpserver.example.com;
+
+    ssl_certificate  /etc/nginx/ssl/example.com.crt;
+    ssl_certificate_key  /etc/nginx/ssl/example.com.key;
+
+    client_max_body_size 24M;
+    client_body_buffer_size 128k;
+    client_header_buffer_size 5120k;
+    large_client_header_buffers 16 5120k;
+
+    location / {
+#        proxy_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "Upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_connect_timeout       600;
+        proxy_send_timeout          600;
+        proxy_read_timeout          600;
+        send_timeout                600;
+        proxy_pass http://127.0.0.1:80;
+    }
+
+    access_log /var/log/nginx/jumpserver.example.com.log;
+    error_log  /var/log/nginx/jumpserver.example.com.log;
+}
+```
 
 ## 参考资料
 - [在 docker 环境下部署运行 JumpServer 堡垒机][1]
