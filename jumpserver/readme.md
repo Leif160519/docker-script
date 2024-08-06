@@ -81,7 +81,7 @@ stream {
       - ./nginx/ssl:/etc/nginx/ssl                                        # 挂载ssl证书目录
     ports:
       - 80:80
-      - 443:443
+      - 443:443                                                           # 添加443端口暴露
 ...
 ```
 
@@ -118,6 +118,8 @@ server {
     error_log  /var/log/nginx/jumpserver.example.com.log;
 }
 ```
+
+> 此方法无法实现301重定向功能，除非直接进入jms_web容器，在/etc/nginx/conf.d/default.conf中80端口部分添加301重定向配置
 
 ## 参考资料
 - [在 docker 环境下部署运行 JumpServer 堡垒机][1]
