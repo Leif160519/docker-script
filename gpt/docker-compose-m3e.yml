@@ -1,0 +1,11 @@
+version: "3"
+services:
+  m3e:
+    image: registry.cn-hangzhou.aliyuncs.com/fastgpt_docker/m3e-large-api
+    container_name: m3e
+    hostname: m3e
+    restart: always
+    ports:
+    - 6008:6008
+    environment:
+      - sk-key=sk-xxxxxxxxxxxxxxxxxx # 自定义

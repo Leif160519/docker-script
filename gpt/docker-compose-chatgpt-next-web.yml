@@ -1,0 +1,17 @@
+version: "3"
+services:
+  chatgpt-next-web:
+    image: yidadaa/chatgpt-next-web:v2.14.2
+    hostname: chatgpt-next-web
+    container_name: chatgpt-next-web
+    restart: always
+    ports:
+    - 3003:3000
+    environment:
+    - BAIDU_API_KEY=api_key
+    - BAIDU_SECRET_KEY=secret_key
+    - DISABLE_GPT4=1 #不想让用户使用 GPT-4
+    - DEFAULT_MODEL=ernie-4.0-8k
+    - CODE=123456 # 访问密码
+    - HIDE_USER_API_KEY=1 # 不想让用户自行填入 API Key
+    - DISABLE_FAST_LINK=1 # 禁用从链接解析预制设置

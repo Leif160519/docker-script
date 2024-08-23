@@ -1,0 +1,13 @@
+version: "3"
+services:
+  chatgpt-web:
+    image: chenzhaoyu94/chatgpt-web
+    hostname: chatgpt-web
+    container_name: chatgpt-web
+    restart: always
+    ports:
+    - 3002:3002
+    environment:
+    - OPENAI_API_BASE_URL=http://192.168.31.150:3001
+    - OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    - OPENAI_API_MODEL=ERNIE-4.0-8K
