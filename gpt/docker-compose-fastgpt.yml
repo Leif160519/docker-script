@@ -96,7 +96,7 @@ services:
       # AI模型的API地址哦。务必加 /v1。这里默认填写了OneApi的访问地址。
       - OPENAI_BASE_URL=http://oneapi:3001/v1
       # AI模型的API Key。（这里默认填写了OneAPI的快速默认key，测试通后，务必及时修改）
-      - CHAT_API_KEY=sk-nYvNTomoJA3IrOmi10A61b22698e492e82423cA36c00C400
+      - CHAT_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
       # 数据库最大连接数
       - DB_MAX_LINK=30
       # 登录凭证密钥

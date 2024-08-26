@@ -1,0 +1,123 @@
+version: "3.8"
+services:
+  elasticsearch-1:
+    image: elasticsearch:7.17.5
+    hostname: elasticsearch-1
+    container_name: elasticsearch-1
+    restart: always
+    environment:
+      - node.name=elasticsearch-1
+      - cluster.name=hs-elk-cluster
+      - path.data=/usr/share/elasticsearch/data
+      - path.logs=/usr/share/elasticsearch/logs
+      - network.host=0.0.0.0
+      - http.port=9200
+      - transport.tcp.port=9300
+      - discovery.seed_hosts=elasticsearch-1,elasticsearch-2,elasticsearch-3
+      - cluster.initial_master_nodes=elasticsearch-1,elasticsearch-2,elasticsearch-3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - http.cors.enabled=true
+      - http.cors.allow-origin="*"
+      - http.cors.allow-headers="*"
+    ports:
+      - 9210:9200
+      - 9310:9300
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./elk-1/data:/usr/share/elasticsearch/data
+      - ./elk-1/logs:/usr/share/elasticsearch/logs
+    ulimits:
+      memlock:
+        hard: -1
+        soft: -1
+    networks:
+      - elasticsearch
+
+  elasticsearch-2:
+    image: elasticsearch:7.17.5
+    hostname: elasticsearch-2
+    container_name: elasticsearch-2
+    restart: always
+    environment:
+      - node.name=elasticsearch-2
+      - cluster.name=hs-elk-cluster
+      - path.data=/usr/share/elasticsearch/data
+      - path.logs=/usr/share/elasticsearch/logs
+      - network.host=0.0.0.0
+      - http.port=9200
+      - transport.tcp.port=9300
+      - discovery.seed_hosts=elasticsearch-1,elasticsearch-2,elasticsearch-3
+      - cluster.initial_master_nodes=elasticsearch-1,elasticsearch-2,elasticsearch-3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - http.cors.enabled=true
+      - http.cors.allow-origin="*"
+      - http.cors.allow-headers="*"
+    ports:
+      - 9220:9200
+      - 9320:9300
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./elk-2/data:/usr/share/elasticsearch/data
+      - ./elk-2/logs:/usr/share/elasticsearch/logs
+    ulimits:
+      memlock:
+        hard: -1
+        soft: -1
+    networks:
+      - elasticsearch
+
+  elasticsearch-3:
+    image: elasticsearch:7.17.5
+    hostname: elasticsearch-3
+    container_name: elasticsearch-3
+    restart: always
+    environment:
+      - node.name=elasticsearch-3
+      - cluster.name=hs-elk-cluster
+      - path.data=/usr/share/elasticsearch/data
+      - path.logs=/usr/share/elasticsearch/logs
+      - network.host=0.0.0.0
+      - http.port=9200
+      - transport.tcp.port=9300
+      - discovery.seed_hosts=elasticsearch-1,elasticsearch-2,elasticsearch-3
+      - cluster.initial_master_nodes=elasticsearch-1,elasticsearch-2,elasticsearch-3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - http.cors.enabled=true
+      - http.cors.allow-origin="*"
+      - http.cors.allow-headers="*"
+    ports:
+      - 9230:9200
+      - 9330:9300
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./elk-3/data:/usr/share/elasticsearch/data
+      - ./elk-3/logs:/usr/share/elasticsearch/logs
+    ulimits:
+      memlock:
+        hard: -1
+        soft: -1
+    networks:
+      - elasticsearch
+
+  kibana:
+    image: kibana:7.17.5
+    container_name: kibana
+    hostname: kibana
+    restart: always
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch-1:9200
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch-1
+      - elasticsearch-2
+      - elasticsearch-3
+    networks:
+      - elasticsearch
+
+networks:
+  elasticsearch:
+    driver: bridge
