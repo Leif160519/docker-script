@@ -23,8 +23,7 @@ services:
       timeout: 20s
       retries: 3
     networks:
-      minio-cluster-net:
-        ipv4_address: 198.18.3.2
+      - minio-cluster-net
 
   minio-cluster-2:
     image: minio/minio:latest
@@ -49,8 +48,7 @@ services:
       timeout: 20s
       retries: 3
     networks:
-      minio-cluster-net:
-        ipv4_address: 198.18.3.3
+      - minio-cluster-net
 
   minio-cluster-3:
     image: minio/minio:latest
@@ -75,8 +73,7 @@ services:
       timeout: 20s
       retries: 3
     networks:
-      minio-cluster-net:
-        ipv4_address: 198.18.3.4
+      - minio-cluster-net
 
   minio-cluster-4:
     image: minio/minio:latest
@@ -101,8 +98,7 @@ services:
       timeout: 20s
       retries: 3
     networks:
-      minio-cluster-net:
-        ipv4_address: 198.18.3.5
+      - minio-cluster-net
 
   minio-proxy:
     image: nginx
@@ -112,21 +108,19 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:rw
+      - ./logs:/var/log/nginx:rw
     ports:
-      - 9000:9000
-      - 9001:9001
+      - 80:80
+      - 443:443
     depends_on:
       - minio-cluster-1
       - minio-cluster-2
       - minio-cluster-3
       - minio-cluster-4
     networks:
-      minio-cluster-net:
-        ipv4_address: 198.18.3.6
+      - minio-cluster-net
 
 networks:
   minio-cluster-net:
     driver: bridge
-    ipam:
-      config:
-        - subnet: 198.18.3.0/24
