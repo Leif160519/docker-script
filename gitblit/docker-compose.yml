@@ -1,0 +1,14 @@
+version: "3"
+services:
+  gitblit-new:
+    container_name: gitblit-new
+    hostname: gitblit-new
+    image: gitblit/gitblit:latest
+    ports:
+      - 8080:8080
+      - 8443:8443
+      - 9418:9418
+      - 29418:29418
+    restart: always
+    volumes:
+      - ./gitblit:/var/opt/gitblit
