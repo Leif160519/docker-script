@@ -22,8 +22,6 @@ services:
 
   mindoc:
     image: registry.cn-hangzhou.aliyuncs.com/mindoc-org/mindoc:v2.1
-    environment:
-      TZ: Asia/Shanghai
     restart: always
     hostname: mindoc
     container_name: mindoc
@@ -38,6 +36,7 @@ services:
       - ./mindoc/database:/mindoc/database
       - ./mindoc/calibre:/opt/calibre
     environment:
+      - TZ=Asia/Shanghai
       - MINDOC_RUN_MODE=prod
       - MINDOC_DB_ADAPTER=mysql
       - MINDOC_DB_HOST=mysql
