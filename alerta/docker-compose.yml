@@ -1,0 +1,30 @@
+version: '3.1'
+services:
+  alerta-web:
+    image: galerta/alerta-web
+    container_name: alerta-web
+    hostname: alerta-web
+    ports:
+      - "9080:8080"
+    depends_on:
+      - alerta-db
+    environment:
+      - DEBUG=1  # remove this line to turn DEBUG off
+      - DATABASE_URL=postgres://postgres:postgres@alerta-db:5432/monitoring
+      - AUTH_REQUIRED=True
+      - ADMIN_USERS=admin@alerta.io #default password: alerta
+      - PLUGINS=remote_ip,reject,heartbeat,blackout,prometheus,slack
+      - ALERTMANAGER_API_URL=http://<alertmanager-ip>:9093
+    restart: always
+
+  alerta-db:
+    image: gpostgres
+    container_name: alerta-db
+    hostname: alerta-db
+    volumes:
+      - ./pg-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: monitoring
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    restart: always
