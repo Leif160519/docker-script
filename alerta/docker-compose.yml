@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   alerta-web:
-    image: galerta/alerta-web
+    image: alerta/alerta-web
     container_name: alerta-web
     hostname: alerta-web
     ports:
