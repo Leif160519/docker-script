@@ -18,7 +18,7 @@ services:
     restart: always
 
   alerta-db:
-    image: gpostgres
+    image: postgres
     container_name: alerta-db
     hostname: alerta-db
     volumes:
