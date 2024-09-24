@@ -11,9 +11,9 @@ services:
     environment:
       - DEBUG=1  # remove this line to turn DEBUG off
       - DATABASE_URL=postgres://postgres:postgres@alerta-db:5432/monitoring
-      - AUTH_REQUIRED=True
+      - AUTH_REQUIRED=false
       - ADMIN_USERS=admin@alerta.io #default password: alerta
-      - PLUGINS=remote_ip,reject,heartbeat,blackout,prometheus,slack
+      - PLUGINS=remote_ip,reject,heartbeat,blackout,prometheus
       - ALERTMANAGER_API_URL=http://<alertmanager-ip>:9093
     restart: always
 
