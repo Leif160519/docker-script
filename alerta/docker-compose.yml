@@ -16,6 +16,8 @@ services:
       - PLUGINS=remote_ip,reject,heartbeat,blackout,prometheus
       - ALERTMANAGER_API_URL=http://<alertmanager-ip>:9093
     restart: always
+    networks:
+      - dbnet
 
   alerta-db:
     image: postgres
@@ -28,3 +30,9 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     restart: always
+    networks:
+      - dbnet
+
+networks:
+  dbnet:
+    driver: bridge
