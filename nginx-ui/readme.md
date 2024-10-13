@@ -21,7 +21,9 @@ LogDirWhiteList = /var/log/nginx # 添加nginx日志目录
 
 ## 注意点
 - 若`nginx.conf`中包含`include /etc/nginx/modules-enabled/*.conf;`内容，请删除或者拷贝一份删除这段内容并挂载到`nginx-ui`容器中
-- 由于[config-nginx.md][3]中提到`Nginx UI 遵循 Debian 的网页服务器配置文件标准。创建的网站配置文件将会放置于 Nginx 配置文件夹（自动检测）下的 sites-available 中，启用后的网站将会创建一份配置文件软连接到 sites-enabled 文件夹`,所以docker-compose中需要将宿主机的`sites-enabled`挂载到`nginx-ui`容器的`sites-available`中，否则`网站管理`-`站点列表`中将显示不全所有nginx配置，所以docker-compose需要如下调整
+- 由于[config-nginx.md][3]中提到
+`Nginx UI 遵循 Debian 的网页服务器配置文件标准。创建的网站配置文件将会放置于 Nginx 配置文件夹（自动检测）下的 sites-available 中，启用后的网站将会创建一份配置文件软连接到 sites-enabled 文件夹`,
+所以docker-compose中需要将宿主机的`sites-enabled`挂载到`nginx-ui`容器的`sites-available`中，否则`网站管理`-`站点列表`中将显示不全所有nginx配置，所以docker-compose需要如下调整
 ```
 version: "3"
 services:
