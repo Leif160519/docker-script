@@ -1,0 +1,16 @@
+version: "3"
+services:
+  nginx-ui:
+    image: uozi/nginx-ui:latest
+    container_name: nginx-ui
+    hostname: nginx-ui
+    restart: always
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - /etc/nginx:/etc/nginx
+      - /var/log/nginx:/var/log/nginx
+      - ./nginx-ui:/etc/nginx-ui
+    ports:
+      - 8080:80
+      - 8443:443
+      - 9000:9000
