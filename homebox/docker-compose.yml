@@ -1,0 +1,17 @@
+version: "3"
+services:
+  homebox:
+    image: registry.cn-hangzhou.aliyuncs.com/jeson/homebox:latest
+    container_name: homebox
+    hostname: homebox
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - HBOX_WEB_MAX_UPLOAD_SIZE=10
+      - HBOX_LOG_FORMAT=text
+      - HBOX_LOG_LEVEL=info
+    volumes:
+        - ./data/homebox/data:/data
+        - /etc/localtime
+    ports:
+        - '7745:7745'
