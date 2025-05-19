@@ -7,6 +7,8 @@ services:
     environment:
       - WEBSOCKET_ENABLED=true
       - SIGNUPS_ALLOWED=true
+      - ADMIN_TOKEN=XXX
+      - DOMAIN=https://your.domain.com
     volumes:
       - ./bw-data:/data
     ports:

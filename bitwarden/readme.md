@@ -6,6 +6,14 @@
 openssl rand -base64 48
 ```
 
+- DOMAIN
+
+实际访问bitwarden的域名地址
+
+## 注意：
+- 首次登录之前确保`SIGNUPS_ALLOWED`设置为`true`，然后注册管理员账号（邮箱地址为标识符，无需实际邮箱验证）
+- 管理员账号注册之后即可设置`SIGNUPS_ALLOWED`为`false`禁止注册，确保安全
+
 ## 参考
 - [使用Docker安装Bitwarden的教程][1]
 
