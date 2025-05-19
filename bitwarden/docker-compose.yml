@@ -1,0 +1,15 @@
+version: '3'
+services:
+  bitwarden:
+    image: bitwardenrs/server:latest
+    hostname: bitwarden
+    container_name: bitwarden
+    environment:
+      - WEBSOCKET_ENABLED=true
+      - SIGNUPS_ALLOWED=true
+    volumes:
+      - ./bw-data:/data
+    ports:
+      - "80:80"
+      - "3012:3012"
+    restart: restart
