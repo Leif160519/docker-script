@@ -1,7 +1,7 @@
 version: '3'
 services:
   bitwarden:
-    image: bitwardenrs/server:latest
+    image: vaultwarden/server:latest
     hostname: bitwarden
     container_name: bitwarden
     environment:
