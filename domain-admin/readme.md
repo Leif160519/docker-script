@@ -1,3 +1,6 @@
+## 账户
+用户名admin，密码123456
+
 ## 参考
 - [domain-admin][1]
 - [docker启动][2]
