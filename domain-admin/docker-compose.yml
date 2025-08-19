@@ -1,0 +1,13 @@
+version: "3"
+services:
+  domain-admin:
+    image: mouday/domain-admin:latest
+    container_name: domain-admin
+    hostname: domain-admin
+    restart: always
+    ports:
+     - 8000:8000
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./database:/app/database
+      - ./logs:/app/logs
