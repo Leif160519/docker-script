@@ -1,0 +1,9 @@
+version: '3'
+services:
+  drawdb:
+    image: avmesquita/drawdb:latest
+    container_name: drawdb
+    hostname: drawdb
+    restart: always
+    ports:
+      - 80:80
