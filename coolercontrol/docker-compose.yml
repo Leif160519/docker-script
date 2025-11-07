@@ -1,0 +1,15 @@
+version: "3"
+services:
+  coolercontrol:
+    image: coolercontrol/coolercontrold:latest
+    hostname: coolercontrol
+    restart: always
+    container_name: coolercontrol
+    ports:
+      - 11987:11987
+    privileged: true
+    volumes:
+      - /etc/hostname:/etc/hostename
+      - /sys:/sys
+      - /dev:/dev
+      - ./config:/etc/coolercontrol
