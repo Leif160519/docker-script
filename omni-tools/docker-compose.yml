@@ -1,0 +1,10 @@
+version: "3"
+services:
+  omni-tools:
+#    image: iib0011/omni-tools:latest
+    image: swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/iib0011/omni-tools:latest
+    hostname: omni-tools
+    container_name: omni-tools
+    restart: always
+    ports:
+      - "8080:80"
