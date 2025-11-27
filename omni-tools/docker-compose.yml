@@ -6,5 +6,7 @@ services:
     hostname: omni-tools
     container_name: omni-tools
     restart: always
+    enviromnent:
+      - DEFAULT_LANG=zh
     ports:
       - "8080:80"
