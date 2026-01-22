@@ -1,0 +1,57 @@
+version: "3"
+services:
+  odoo-db:
+    #image: postgres:15
+    image: registry.cn-hongkong.aliyuncs.com/i0i/postgres:15
+    container_name: odoo-db
+    hostname: odoo-db
+    restart: always
+    environment:
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_DB=postgres
+    ports:
+      - 65432:5432
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./postgresql/data:/var/lib/postgresql/data
+    healthcheck:
+      test: "pg_isready -h localhost -U odoo -d postgres"
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - odoo
+
+  odoo-web:
+    #image: odoo:19.0
+    image: registry.cn-hongkong.aliyuncs.com/i0i/odoo:19.0
+    container_name: odoo-web
+    hostname: odoo-web
+    restart: always
+    environment:
+      - HOST=odoo-db
+      - PORT=65432
+      - USER=odoo
+      - PASSWORD=odoo
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./odoo/data:/var/lib/odoo
+      - ./odoo/config:/etc/odoo
+      - ./odoo/addons:/mnt/extra-addons
+    ports:
+      - 8069:8069
+    healthcheck:
+      test: "curl -fsL http://127.0.0.1:8069 > /dev/null"
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    depends_on:
+      - odoo-db
+    networks:
+      - odoo
+
+
+networks:
+  odoo:
+    driver: bridge
