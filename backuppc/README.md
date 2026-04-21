@@ -20,13 +20,23 @@ groupmod -g 1000 backuppc
 
 ## 已知问题
 backuppc 的prometheus中关于`backuppc_hosts_full_keep_count`指标采取失败
-去github上下载[Metrics.pm][3]文件并使用如下命令替换和重启服务即可
+使用项目路径下或者去github上下载[Metrics.pm][3]文件并使用如下命令替换和重启服务即可
 ```
 docker cp Metrics.pm backuppc:/usr/local/BackupPC/lib/BackupPC/CGI/Metrics.pm
 docker restart backuppc
 ```
 
+> 如果有正在备份的任务，可以用`docker exec -u backuppc backuppc /usr/local/BackupPC/bin/BackupPC_serverMesg server reload`热加载配置
+
 - [[BUG] Prometheus exporter is wrong when array is used in configuration for FullKeepCnt #462][2]
+
+## 优化
+备份浏览中，文件大小显示的单位为字节，我们可以通过修改配置文件将其根据实际大小自动显示KB，MB或者GB
+使用项目路径下的Brower.pm，将其复制到指定目录下，重载配置即可
+```
+docker cp Browse.pm backuppc:/usr/local/BackupPC/lib/BackupPC/CGI/
+docker exec -u backuppc backuppc /usr/local/BackupPC/bin/BackupPC_serverMesg server reload
+```
 
 ## 其他
 若备份的路径中是非`/`下的挂载路径，则backuppc会默认不备份，需要修改rsync参数：
